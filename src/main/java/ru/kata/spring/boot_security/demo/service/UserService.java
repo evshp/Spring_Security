@@ -3,15 +3,16 @@ package ru.kata.spring.boot_security.demo.service;
 
 
 
+import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.User;
 
-import java.time.LocalDate;
+import javax.management.relation.RoleNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
 
-    void saveUser(String name, String lastName, LocalDate dateOfBirth , String email, String password);
+    void saveUser(User user) throws RoleNotFoundException;
 
     void removeUserById(long id);
 
@@ -19,8 +20,10 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    void cleanUsersTable();
-    void update(long id, User user);
+    void update(long id, String name, String lastName, String email);
 
+    @Transactional
     Optional<User> getUserByEmail(String email);
+    @Transactional
+    Optional<User> getUserByName(String name);
 }

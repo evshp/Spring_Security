@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @Controller
 @PreAuthorize(value = "hasRole('ADMIN')")
-public class EntityController {
+public class AdminController {
 
 
     private final UserService userServiceJPA;
@@ -25,13 +25,15 @@ public class EntityController {
 
 
     @Autowired
-    public EntityController(UserService userServiceJPA, UserValidator userValidator) {
+    public AdminController(UserService userServiceJPA, UserValidator userValidator) {
         this.userServiceJPA = userServiceJPA;
         this.userValidator = userValidator;
     }
 
-    //Показать всех пользователей
 
+
+
+    //Показать всех пользователей
     @GetMapping("/people")
     public String index(Model model) {
         try {

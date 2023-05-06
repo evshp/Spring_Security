@@ -20,7 +20,7 @@ import java.util.*;
 
 @Service("MyUserDetailsService")
 @Transactional(readOnly = true)
-public class MyUserDetailsService implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -28,7 +28,7 @@ public class MyUserDetailsService implements UserService, UserDetailsService {
 
 
     @Autowired
-    public MyUserDetailsService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
 

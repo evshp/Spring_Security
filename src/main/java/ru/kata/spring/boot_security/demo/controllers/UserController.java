@@ -11,6 +11,11 @@ import ru.kata.spring.boot_security.demo.security.UserPrincipal;
 @Controller
 public class UserController {
 
+    @GetMapping("/")
+    public String firstPage() {
+        return "redirect:/user";
+    }
+
     @GetMapping("/user")
     public String userPage(ModelMap model, @AuthenticationPrincipal UserPrincipal userPrincipal) {
         User user = userPrincipal.getUserDetails();
